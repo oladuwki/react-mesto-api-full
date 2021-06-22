@@ -1,0 +1,10 @@
+
+@media screen and (max-width: 768px) {
+    .header__popup{
+      display: none;
+      min-height: 100px;
+      flex-direction: column;
+      align-items: center;
+    
+  }
+}
