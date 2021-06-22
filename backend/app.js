@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -25,6 +26,22 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+
+const options = {
+  origin: [
+    'http://localhost:3000',
+    'https://api.oladuwki.nomoredomains.club',
+    'https://oladuwki.nomoredomains.club',
+    'https://api.oladuwki.nomoredomains.club/users/me',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+app.use('*', cors(options));
+
 app.use(errorLogger);
 router.use('/', errorRoutes);
 
