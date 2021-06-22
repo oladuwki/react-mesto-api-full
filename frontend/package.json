@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "deploy": "npm run build && scp -r ./build/* oladuwki@178.154.245.217:/home/oladuwki/frontend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
