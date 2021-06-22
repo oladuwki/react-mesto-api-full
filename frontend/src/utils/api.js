@@ -94,10 +94,10 @@ export default class Api {
 }
 
  export const api = new Api({
-  url:"https://mesto.nomoreparties.co/v1/cohort-21/",
+  url:"https://api.oladuwki.nomoredomains.club/",
   headers: {
       'Content-Type': 'application/json',
-      authorization: 'a8225bf7-b253-4907-b1a0-ba222b85105e',
+      authorization: `Bearer ${localStorage.getItem("token")}`
   }
 });
 
