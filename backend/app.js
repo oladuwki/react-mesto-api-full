@@ -63,11 +63,8 @@ app.listen(PORT, () => {
   console.log('сервер запущен');
 });
 
-
-
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-
