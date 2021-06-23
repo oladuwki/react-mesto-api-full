@@ -15,7 +15,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(requestLogger);
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,12 +43,12 @@ const options = {
 };
 app.use('*', cors(options));
 
-app.use(errorLogger);
-router.use('/', errorRoutes);
+
+app.use(requestLogger);
 
 app.use(cookieParser());
 app.use(router);
-app.use(errors());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((err, req, res, next) => {
@@ -68,3 +68,8 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+
+app.use(errorLogger);
+router.use('/', errorRoutes);
+
+app.use(errors());
