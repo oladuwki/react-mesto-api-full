@@ -236,7 +236,7 @@ function App() {
     isMenuCloseIcon={isMenuCloseIcon ? 'header-menu_opened' : 'header-menu_closed'}   onClose={closeAllPopups} />
     
       <Switch>
-      <ProtectedRoute path='/mesto' component={Main} loggedIn={loggedIn} cards={cards} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike= {handleCardLike} onCardDelete={handleCardDelete} />
+      <ProtectedRoute path='/' component={Main} loggedIn={loggedIn} cards={cards} onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} onCardLike= {handleCardLike} onCardDelete={handleCardDelete} />
         <Route path='/signup' >
           <Register onRegister= {onRegister} /> 
         </Route>
