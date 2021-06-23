@@ -11,7 +11,7 @@ export default class Api {
   }
 
   getInitalCards(){
-      return fetch(`${this._url}cards`, {
+      return fetch(`${this._address}cards`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -22,7 +22,7 @@ export default class Api {
   }
 
   addCard({name, link}) {
-    return fetch(`${this._url}cards`, {
+    return fetch(`${this._address}cards`, {
       method: 'POST',
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,7 +38,7 @@ export default class Api {
 
   
   deleteCard(cardId){
-    return fetch(`${this._url}cards/${cardId}`, {
+    return fetch(`${this._address}cards/${cardId}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -49,7 +49,7 @@ export default class Api {
   }
 
   putLikes(cardId) {
-    return fetch(`${this._url}cards/likes/${cardId}`, {
+    return fetch(`${this._address}cards/likes/${cardId}`, {
         method: "PUT",
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -60,7 +60,7 @@ export default class Api {
   }
 
   deleteLikes(cardId) {
-    return fetch(`${this._url}cards/likes/${cardId}`, {
+    return fetch(`${this._address}cards/likes/${cardId}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -71,7 +71,7 @@ export default class Api {
   }
 
   getProfileInfo() {
-    return fetch(`${this._url}users/me`, {
+    return fetch(`${this._address}users/me`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -86,7 +86,7 @@ export default class Api {
   }
 
   saveProfileInfo({name, description}) {
-    return fetch(`${this._url}users/me`, {
+    return fetch(`${this._address}users/me`, {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -101,7 +101,7 @@ export default class Api {
   }
 
   saveAvatar({avatar}) {
-    return fetch(`${this._url}users/me/avatar`, {
+    return fetch(`${this._address}users/me/avatar`, {
       method: 'PATCH',
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
