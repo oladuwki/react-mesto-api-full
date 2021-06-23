@@ -4,12 +4,12 @@ export default class Api {
       this._headers = config.headers;
   }
 
-  _handleResponse(res) {
-    if (!res.ok ) {
-        return Promise.reject(console.log(`Что-то пошло не так. Ошибка ${res.status}`));
-    }
-    return res.json();
-  }
+  // _handleResponse(res) {
+  //   if (!res.ok ) {
+  //       return Promise.reject(console.log(`Что-то пошло не так. Ошибка ${res.status}`));
+  //   }
+  //   return res.json();
+  // }
 
   getInitalCards(){
       return fetch(`${this._url}cards`, {
