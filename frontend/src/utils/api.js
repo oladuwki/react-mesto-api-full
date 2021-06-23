@@ -14,7 +14,7 @@ export default class Api {
       return fetch(`${this._address}cards`, {
           method: "GET",
           headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
+            authorization: `Bearer ${localStorage.getItem("jwt")}`,
             "Content-Type": "application/json",
           },
         })
@@ -25,7 +25,7 @@ export default class Api {
     return fetch(`${this._address}cards`, {
       method: 'POST',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -41,7 +41,7 @@ export default class Api {
     return fetch(`${this._address}cards/${cardId}`, {
         method: "DELETE",
         headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization: `Bearer ${localStorage.getItem("jwt")}`,
           "Content-Type": "application/json",
         },
     })
@@ -52,7 +52,7 @@ export default class Api {
     return fetch(`${this._address}cards/likes/${cardId}`, {
         method: "PUT",
         headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization: `Bearer ${localStorage.getItem("jwt")}`,
           "Content-Type": "application/json",
         },
     })
@@ -63,7 +63,7 @@ export default class Api {
     return fetch(`${this._address}cards/likes/${cardId}`, {
         method: "DELETE",
         headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization: `Bearer ${localStorage.getItem("jwt")}`,
           "Content-Type": "application/json",
         },
     })
@@ -74,7 +74,7 @@ export default class Api {
     return fetch(`${this._address}users/me`, {
         method: "GET",
         headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization: `Bearer ${localStorage.getItem("jwt")}`,
           "Content-Type": "application/json",
         },
       })
@@ -89,7 +89,7 @@ export default class Api {
     return fetch(`${this._address}users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -104,7 +104,7 @@ export default class Api {
     return fetch(`${this._address}users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
