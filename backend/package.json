@@ -1,7 +1,15 @@
 {
   "name": "express-mesto",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "сервер для проекта mesto",
+  "main": "./app.js",
+  "author": "Maryia Rakitskaya",
+  "scripts": {
+    "lint": "npx eslint . --ext .js",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "homepage": "https://github.com/MashaRakitskaya/express-mesto/",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -12,34 +20,23 @@
     "express": "^4.17.1",
     "express-winston": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.13",
+    "mongoose": "^5.12.10",
     "validator": "^13.6.0",
     "winston": "^3.3.3"
   },
-  "main": "app.js",
-  "scripts": {
-    "lint": "npx eslint .",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
   "devDependencies": {
-    "eslint": "^7.28.0",
-    "eslint-config-airbnb": "^18.2.1",
+    "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-import-resolver-webpack": "^0.13.1",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.23.2",
     "nodemon": "^2.0.7"
   },
-  "description": "## Директории",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oladuwki/express-mesto.git"
+    "url": "git+https://github.com/MashaRakitskaya/express-mesto.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oladuwki/express-mesto/issues"
-  },
-  "homepage": "https://github.com/oladuwki/express-mesto#readme"
+    "url": "https://github.com/MashaRakitskaya/express-mesto/issues"
+  }
 }

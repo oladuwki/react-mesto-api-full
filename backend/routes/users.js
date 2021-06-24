@@ -7,7 +7,7 @@ const validateId = celebrate({
   }),
 });
 
-const validateUpdateProfile = celebrate({
+const validateUpdateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     about: Joi.string().required().min(2).max(30),
@@ -23,13 +23,17 @@ const validateAvatar = celebrate({
 });
 
 const {
-  getUsers, getUser, updateProfile, updateAvatar, getUserId,
+  getUsers,
+  getUserId,
+  updateUser,
+  updateAvatar,
+  getUserMe,
 } = require('../controllers/users');
 
 router.get('/', getUsers);
+router.get('/me', getUserMe);
 router.get('/:id', validateId, getUserId);
-router.get('/me', getUser);
-router.patch('/me', validateUpdateProfile, updateProfile);
+router.patch('/me', validateUpdateUser, updateUser);
 router.patch('/me/avatar', validateAvatar, updateAvatar);
 
 module.exports = router;
