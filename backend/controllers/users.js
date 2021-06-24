@@ -1,3 +1,4 @@
+const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const users = require('../models/user');
@@ -146,6 +147,7 @@ module.exports.updateUser = (req, res, next) => {
 
 
 module.exports.login = (req, res, next) => {
+
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
