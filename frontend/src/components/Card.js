@@ -4,11 +4,9 @@ import React from "react";
 export default function Card(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
-    const isOwn = props.card.owner._id !== currentUser._id;
-    const cardDeleteButtonClassName = (
-        `element__trash ${isOwn ? 'element__button_visible' : 'element__trash_active'}`
-      ); 
-    const isLiked = props.card.likes.some(i => i._id === currentUser._id);
+    const isOwn = props.card.owner === currentUser._id;
+    const cardDeleteButtonClassName = `element__trash ${isOwn ? 'element__trash_active' : ''}`; 
+    const isLiked = props.card.likes.some(i => i === currentUser._id);
     const cardLikeButtonClassName = `element__group ${isLiked ? 'element__group_active' : ''}`;
 
     function handleClick(evt) {
@@ -35,7 +33,7 @@ export default function Card(props) {
           <h2 className="element__name">{props.card.name}</h2>
         </div>
         <div className="element__likes">
-          <button type='button' className="element__group" className={cardLikeButtonClassName} onClick = {handleLikeClick}></button>
+          <button type='button' className={cardLikeButtonClassName} onClick = {handleLikeClick} />
           <p className="element__group-number">{props.card.likes.length}</p>
         </div>
       </div>

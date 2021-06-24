@@ -1,60 +1,47 @@
 export const BASE_URL = 'https://api.oladuwki.nomoredomains.club';
 
- function handleResponse(res) {
-  if (!res.ok ) {
-      console.log(res);
-      return Promise.reject(console.log(`Что-то пошло не так. Ошибка ${res.status}`));
-      
+const checkAnswerCorrectness = (response) => {
+  if (response.ok) {
+    return response.json();
   }
-  
-  return res.json();
-}
 
-const headers = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json',
+  return Promise.reject(`Ошибка ${response.status}`);
 };
 
-export const register = (data) => {
+export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify({
-      password: data.password,
-      email: data.email  
-      
-     }),
-  })
-    .then(res => handleResponse(res));
+    body: JSON.stringify({ email, password }),
+  }).then((response) => checkAnswerCorrectness(response));
 };
 
-export const authorize = ( data ) => {
+export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
-    headers,
-    method: 'POST',
-    body: JSON.stringify({ 
-      password: data.password,
-      email: data.email 
-    }),
-    credentials: "include"
-  })
-    .then(res => handleResponse(res))
-    .then((data) => data);
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ email, password }),
+  }).then((response) => checkAnswerCorrectness(response));
 };
 
 export const getContent = (token) => {
-  console.log(token);
   return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    credentials: "include"
+    credentials: "include",
   })
-  .then(res => handleResponse(res))
-  .then(data => data)
-}
+    .then((response) => checkAnswerCorrectness(response))
+    .then((data) => data);
+};

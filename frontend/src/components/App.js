@@ -101,7 +101,7 @@ function App() {
       }
 
       function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some(i => i === currentUser._id);
         if (!isLiked) {
           api.putLikes(card._id)
           .then((newCard) => {
@@ -176,7 +176,7 @@ function App() {
         .getContent(jwt)
         .then((res) => {
           if(res){
-            const email = res.data.email;
+            const email = res.email;
             setUserInfo({email});
             setIsLoggedIn(true);
             history.push('/mesto'); 

@@ -127,7 +127,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       res.send({
         token: jwt.sign(
-          { _id: user._id },
+          { _id: user._id, email: user.email },
           NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
           // eslint-disable-next-line comma-dangle
           { expiresIn: '7d' }
