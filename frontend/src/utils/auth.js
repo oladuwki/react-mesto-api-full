@@ -1,14 +1,14 @@
 export const BASE_URL = 'https://api.oladuwki.nomoredomains.club';
 
-const checkAnswerCorrectness = (response) => {
-  if (response.ok) {
-    return response.json();
-  }
+function handleResponse(res) {
+  if (!res.ok ) {
+      console.log(res);
+      return Promise.reject(console.log(`Что-то пошло не так. Ошибка ${res.status}`));
+    }
+  return res.json();
+}
 
-  return Promise.reject(`Ошибка ${response.status}`);
-};
-
-export const register = (email, password) => {
+export const register = (data) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
@@ -16,11 +16,14 @@ export const register = (email, password) => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify({ email, password }),
-  }).then((response) => checkAnswerCorrectness(response));
+    body: JSON.stringify({
+      password: data.password,
+      email: data.email
+     })
+  }).then((res) => handleResponse(res));
 };
 
-export const authorize = (email, password) => {
+export const authorize = (data) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
@@ -28,8 +31,11 @@ export const authorize = (email, password) => {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify({ email, password }),
-  }).then((response) => checkAnswerCorrectness(response));
+    body: JSON.stringify({
+      password: data.password,
+      email: data.email  
+     })
+  }).then((res) => handleResponse(res));
 };
 
 export const getContent = (token) => {
@@ -42,6 +48,6 @@ export const getContent = (token) => {
     },
     credentials: "include",
   })
-    .then((response) => checkAnswerCorrectness(response))
+    .then((response) => handleResponse(response))
     .then((data) => data);
 };
